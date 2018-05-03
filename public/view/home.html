@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>excel-column-finder</title>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT=0>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet/css" href="/public/static/stylesheet/bootstrap.min.css">
+    <link rel="stylesheet/less" type="text/css" href="/public/static/bootstrap/bootstrap.less">
+    <link rel="stylesheet/less" type="text/css" href="/public/static/css/custom.css">
+    <script src="/public/static/javascript/less.js"></script>
+    <script src="/public/static/javascript/jquery.min.js"></script>
+    <script src="/public/static/javascript/bootstrap.min.js"></script>
+    <script src="/public/static/javascript/output.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script> -->
+    <script src="/public/static/javascript/custom/app.js"></script>
+    <script src = "/public/static/javascript/custom/home.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="AppCtrl">
+    <form>
+        <input type="text" id="startingColumn" name="startingColumn"  ng-model="startingColumn" placeholder="Column to start">
+        <input type="text" id="rows" name="rows"  ng-model="rows" placeholder="No of rows">
+        <input type="text" id="columns" name="columns"  ng-model="columns" placeholder="No of columns">
+        <button type="button" ng-click="getWordCount()">Submit</button>
+    </form>
+
+    <div class="content">
+
+    </div>
+</div>
+
+</body>
+</html>
