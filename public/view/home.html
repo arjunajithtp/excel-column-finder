@@ -34,9 +34,13 @@
     </form>
 
     <div class="content">
-        <table width="100%">
+        <table width="100%" border="1">
             <tr ng-repeat="row in gridData">
-                <td ng-repeat="col in row" style="max-width: 99%">{{`{{col}}`}}</td>
+                <td ng-repeat="(key, col) in row" style="max-width: 99%" >
+                    <div class="cell" style="text-align: center">
+                        <label ng-bind="key" hidden="true"></label>{{`{{col}}`}}
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

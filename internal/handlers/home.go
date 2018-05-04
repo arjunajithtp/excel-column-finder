@@ -24,24 +24,14 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		words := services.LetterIncrementation(startingColumn, rows * columns)
 		var wordSlices [][]string
-		//var rowSlice []string
+		
 		start := 0
 		for i := 0; i < rows; i++ {
-			//for j := 0; j < columns; j++ {
-				end := (i+1)*columns
-				rowSlice := words[start:end]
-				wordSlices = append(wordSlices, rowSlice)
-				start = end
-			//}
+			end := (i+1)*columns
+			rowSlice := words[start:end]
+			wordSlices = append(wordSlices, rowSlice)
+			start = end
 		}
-		/*for i := 0; i < len(words); i++{
-			for j := 0; j < columns; j++ {
-				rowSlice = append(rowSlice, words[i])
-				j++
-			}
-			wordSlices = append(wordSlices,rowSlice)
-			rowSlice = nil
-		}*/
 
 
 		wordsByte, err := json.Marshal(wordSlices)
