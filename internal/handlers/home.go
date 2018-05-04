@@ -24,7 +24,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		words := services.LetterIncrementation(startingColumn, rows * columns)
 		var wordSlices [][]string
-		
+
 		start := 0
 		for i := 0; i < rows; i++ {
 			end := (i+1)*columns
