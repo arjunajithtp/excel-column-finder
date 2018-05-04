@@ -19,7 +19,7 @@
     <script src="/public/static/javascript/jquery.min.js"></script>
     <script src="/public/static/javascript/bootstrap.min.js"></script>
     <script src="/public/static/javascript/output.min.js"></script>
-    <script src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script> -->
     <script src="/public/static/javascript/custom/app.js"></script>
     <script src = "/public/static/javascript/custom/home.js"></script>
@@ -27,14 +27,18 @@
 <body ng-app="myApp">
 <div ng-controller="AppCtrl">
     <form>
-        <input type="text" id="startingColumn" name="startingColumn"  ng-model="startingColumn" placeholder="Column to start">
-        <input type="text" id="rows" name="rows"  ng-model="rows" placeholder="No of rows">
-        <input type="text" id="columns" name="columns"  ng-model="columns" placeholder="No of columns">
+        <input type="text" oninput="this.value = this.value.toUpperCase()" id="startingColumn" name="startingColumn"  ng-model="startingColumn" placeholder="Column to start">
+        <input type="number" id="rows" name="rows"  ng-model="rows" placeholder="No of rows">
+        <input type="number" id="columns" name="columns"  ng-model="columns" placeholder="No of columns">
         <button type="button" ng-click="getWordCount()">Submit</button>
     </form>
 
     <div class="content">
-
+        <table width="100%">
+            <tr ng-repeat="row in gridData">
+                <td ng-repeat="col in row" style="max-width: 99%">{{`{{col}}`}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 
