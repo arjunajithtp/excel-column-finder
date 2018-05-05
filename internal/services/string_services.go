@@ -10,7 +10,7 @@ func LetterIncrementation(startingColumn string, count int) []string {
 	if startingLen > 0 {
 		for i := 0; i < count; i++ {
 			wordRune := []rune(helpers.Reverse(startingColumn))
-			
+
 			var newRunes [][]rune
 			var newLetter []rune
 			increment := rune(i)
@@ -20,11 +20,11 @@ func LetterIncrementation(startingColumn string, count int) []string {
 				newLetter = append(newLetter, newByte)
 				increment = remainder
 
-				if j == len(wordRune) - 1 && increment > 0{ // for additional letters
+				if j == len(wordRune)-1 && increment > 0 { // for additional letters
 					newByte, remainder = NewLetter(64, increment)
 					newLetter = append(newLetter, newByte)
 				}
-				if len(newLetter) % len(startingColumn) == 0 { // filtering the required words
+				if len(newLetter)%len(startingColumn) == 0 { // filtering the required words
 					newRunes = append(newRunes, newLetter)
 				}
 
@@ -41,8 +41,8 @@ func NewLetter(oldByte, increment rune) (rune, rune) {
 	newByte := oldByte + increment
 	if newByte > 90 {
 		r := newByte % 90
-		if r > 26{
-			if r % 26 == 0 {
+		if r > 26 {
+			if r%26 == 0 {
 				return 90, (newByte / 90) + (r / 26) - 1
 			}
 			return 64 + (r % 26), (newByte / 90) + (r / 26)

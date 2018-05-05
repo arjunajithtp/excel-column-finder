@@ -1,12 +1,12 @@
 package handlers
 
 import (
+	"encoding/json"
 	"github.com/arjunajithtp/excel-column-finder/internal/helpers"
+	"github.com/arjunajithtp/excel-column-finder/internal/services"
 	"log"
 	"net/http"
 	"strconv"
-	"github.com/arjunajithtp/excel-column-finder/internal/services"
-	"encoding/json"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
@@ -22,17 +22,16 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println("error while trying to convert column value to integer: ", err)
 		}
-		words := services.LetterIncrementation(startingColumn, rows * columns)
+		words := services.LetterIncrementation(startingColumn, rows*columns)
 		var wordSlices [][]string
 
 		start := 0
 		for i := 0; i < rows; i++ {
-			end := (i+1)*columns
+			end := (i + 1) * columns
 			rowSlice := words[start:end]
 			wordSlices = append(wordSlices, rowSlice)
 			start = end
 		}
-
 
 		wordsByte, err := json.Marshal(wordSlices)
 		if err != nil {
