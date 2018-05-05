@@ -1,6 +1,8 @@
 package services
 
-import "github.com/arjunajithtp/excel-column-finder/internal/helpers"
+import (
+	"github.com/arjunajithtp/excel-column-finder/internal/helpers"
+)
 
 func LetterIncrementation(startingColumn string, count int) []string {
 	var words []string
@@ -8,6 +10,7 @@ func LetterIncrementation(startingColumn string, count int) []string {
 	if startingLen > 0 {
 		for i := 0; i < count; i++ {
 			wordRune := []rune(helpers.Reverse(startingColumn))
+			
 			var newRunes [][]rune
 			var newLetter []rune
 			increment := rune(i)
@@ -17,11 +20,14 @@ func LetterIncrementation(startingColumn string, count int) []string {
 				newLetter = append(newLetter, newByte)
 				increment = remainder
 
-				if j == len(wordRune) - 1 && increment > 0{
+				if j == len(wordRune) - 1 && increment > 0{ // for additional letters
 					newByte, remainder = NewLetter(64, increment)
 					newLetter = append(newLetter, newByte)
 				}
-				newRunes = append(newRunes, newLetter)
+				if len(newLetter) % len(startingColumn) == 0 { // filtering the required words
+					newRunes = append(newRunes, newLetter)
+				}
+
 			}
 			for k := 0; k < len(newRunes); k++ {
 				words = append(words, helpers.Reverse(string(newRunes[k])))
